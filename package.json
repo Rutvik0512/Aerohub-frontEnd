@@ -1,13 +1,16 @@
 {
-  "name": "my-v0-project",
+  "name": "aerohub-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "npm install --legacy-peer-deps"
+    "lint": "next lint"
+  },
+  "engines": {
+    "node": "22.x",
+    "npm": "10.x"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -69,5 +72,20 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rutvik0512/Aerohub-frontEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rutvik0512/Aerohub-frontEnd/issues"
+  },
+  "homepage": "https://github.com/Rutvik0512/Aerohub-frontEnd#readme",
+  "description": ""
 }

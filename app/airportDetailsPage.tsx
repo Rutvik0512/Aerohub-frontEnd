@@ -1,4 +1,4 @@
-import {AirportDto} from "@/dtos/AirportDto";
+import {Airportdto} from "@/dtos/airportdto";
 import {useEffect, useState} from "react";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
@@ -42,8 +42,8 @@ const getUrl = ({
     }
     return `${baseUrl}?${params.toString()}`;
 };
-const parseAirport = (raw: AirportDto): AirportDto => {
-    return new AirportDto({
+const parseAirport = (raw: Airportdto): Airportdto => {
+    return new Airportdto({
         icao: raw.icao,
         iata: raw.iata ?? "",
         name: raw.name,
@@ -67,7 +67,7 @@ const TIMEZONES = [
     "America/Boise",
 ]
 export default function AirportDetailsPage() {
-    const [airports, setAirports] = useState<AirportDto[]>([]);
+    const [airports, setAirports] = useState<Airportdto[]>([]);
     const [currentPage, setCurrentPage] = useState(1)
     const [rowsPerPage, setRowsPerPage] = useState(10)
     const [searchTerm, setSearchTerm] = useState("")
@@ -107,7 +107,7 @@ export default function AirportDetailsPage() {
                 });
                 const resp = await fetch(url);
                 const json = await resp.json();
-                const rawList: AirportDto[] = json.content || [];
+                const rawList: Airportdto[] = json.content || [];
                 setAirports(rawList.map(parseAirport));
                 setTotalPages(json.totalPages);
                 setTotalElements(json.totalElements);

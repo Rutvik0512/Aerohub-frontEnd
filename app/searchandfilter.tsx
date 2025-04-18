@@ -10,7 +10,7 @@ interface SearchAndFilterProps {
     onAddNew: () => void;
 }
 
-class SearchAndFilter extends React.Component<SearchAndFilterProps> {
+export class Searchandfilter extends React.Component<SearchAndFilterProps> {
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.props.onSearchTermChange(e.target.value);
     };
@@ -69,4 +69,4 @@ class SearchAndFilter extends React.Component<SearchAndFilterProps> {
     }
 }
 
-export default SearchAndFilter;
+export default Searchandfilter;

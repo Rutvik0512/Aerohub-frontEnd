@@ -1,5 +1,5 @@
 "use client"
-import {AirportDto} from "@/dtos/AirportDto"
+import {AirportDto} from "@/dtos/airportdto";
 import {useEffect, useState} from "react";
 import {Button} from "@/components/ui/button";
 import {ArrowUpDown, Check, Clock, Compass, Globe, Loader2, MapPin, Mountain, Plane, Plus} from "lucide-react";
@@ -11,7 +11,7 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import {Dialog, DialogContent, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Label} from "@/components/ui/label";
-import SearchAndFilter from "@/app/SearchAndFilter";
+import {Searchandfilter} from "@/app/searchandfilter";
 
 const getUrl = ({
                     pageSize = 10,
@@ -112,7 +112,7 @@ export default function AirportDetailsPage() {
                 });
                 const resp = await fetch(url);
                 const json = await resp.json();
-                const rawList: AirportDto[] = json.content || [];
+                const rawList: Airportdto[] = json.content || [];
                 setAirports(rawList.map(parseAirport));
                 setTotalPages(json.totalPages);
                 setTotalElements(json.totalElements);
@@ -303,7 +303,7 @@ export default function AirportDetailsPage() {
                     </p>
                 </motion.div>
 
-                <SearchAndFilter
+                <Searchandfilter
                     searchTerm={searchTerm}
                     onSearchTermChange={setSearchTerm}
                     onAddNew={() => setIsModalOpen(true)}
