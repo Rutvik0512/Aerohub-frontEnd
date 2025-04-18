@@ -308,7 +308,6 @@ export default function AirportDetailsPage() {
                     onSearchTermChange={setSearchTerm}
                     onAddNew={() => setIsModalOpen(true)}
                 />
-
                 {loading ? (
                     <motion.div
                         initial={{opacity: 0, y: 20}}

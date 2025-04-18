@@ -5,7 +5,7 @@ applications:
     buildpacks:
       - nodejs_buildpack
     command: >
-      sh -c "npm run dev"
+      sh -c "npm run build && npm run start"
     env:
       NPM_CONFIG_LEGACY_PEER_DEPS: "true"
-      NODE_ENV: production
+      NPM_CONFIG_PRODUCTION: "false"
