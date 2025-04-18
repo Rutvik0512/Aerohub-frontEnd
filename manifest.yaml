@@ -1,0 +1,8 @@
+applications:
+  - name: flight-details
+    memory: 2G
+    disk_quota: 4G
+    buildpacks:
+      - nodejs_buildpack
+    command: >
+      sh -c "npm build && npm start"

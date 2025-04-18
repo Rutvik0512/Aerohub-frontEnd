@@ -1,0 +1,10 @@
+.idea/
+node_modules/
+dist/
+build/
+.env
+.git/
+.gitignore
+*.log
+temp/
+.DS_Store
