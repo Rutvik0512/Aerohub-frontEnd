@@ -1,6 +1,6 @@
 applications:
   - name: flight-details
-    memory: 2G
+    memory: 4G
     disk_quota: 4G
     buildpacks:
       - nodejs_buildpack
