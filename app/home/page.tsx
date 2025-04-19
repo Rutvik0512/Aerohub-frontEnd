@@ -492,11 +492,11 @@ export default function AirportDetailsPage() {
                                     <TableRow>
                                         <TableHead
                                             className="cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                                            onClick={() => requestSort("key")}
+                                            onClick={() => {}}
                                         >
                                             <div className="flex items-center gap-2">
                                                 <Plane className="h-4 w-4 text-teal-500" />
-                                                <span>Key{getSortDirectionIndicator("key")}</span>
+                                                <span>Key</span>
                                             </div>
                                         </TableHead>
                                         <TableHead
@@ -1026,8 +1026,8 @@ export default function AirportDetailsPage() {
                                         <Input
                                             id="country"
                                             name="country"
-                                            value="US"
-                                            disabled
+                                            value={newAirport.country}
+                                            onChange={handleInputChange}
                                             className="bg-slate-50"
                                         />
                                         <p className="text-xs text-slate-500">
