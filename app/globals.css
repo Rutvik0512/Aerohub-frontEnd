@@ -105,3 +105,35 @@ body {
 .animate-grow {
   animation: grow 3s infinite alternate;
 }
+
+/* ───── ice drifting animation ───── */
+.wind-flow {
+  pointer-events: none;
+  overflow: hidden;
+  position: relative;
+}
+.wind-flow::before,
+.wind-flow::after {
+  content: "\2744";               /* Unicode snowflake */
+  position: absolute;
+  left: -40px;
+  opacity: 0;
+  animation: ice-blow 4s linear infinite;
+}
+.wind-flow::before {
+  top: 20%;
+  font-size: 1.5rem;
+  color: #e0f7fa;
+}
+.wind-flow::after {
+  top: 60%;
+  font-size: 1rem;
+  color: #b2ebf2;
+  animation-delay: 2s;
+}
+
+@keyframes ice-blow {
+  0%   { transform: translate(0,0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: translate(300px,-50px) rotate(360deg); opacity: 0; }
+}

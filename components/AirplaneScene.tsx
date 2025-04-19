@@ -1,7 +1,7 @@
 // src/components/AirplaneScene.tsx
 'use client'
 
-import React, { Suspense, useRef, useState, useEffect, memo } from 'react'
+import React, { Suspense, useRef, useState, useEffect, memo, useLayoutEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Sky, Cloud, Environment } from '@react-three/drei'
 import * as THREE from 'three'
@@ -9,6 +9,13 @@ import AirplaneModel from './AirplaneModel'
 
 function CameraRig({ targetRef }: { targetRef: React.RefObject<THREE.Object3D> }) {
     const { camera } = useThree()
+    useLayoutEffect(() => {
+        if (targetRef.current) {
+            const tgt = targetRef.current.position
+            camera.position.set(radius + tgt.x, height + tgt.y, tgt.z)
+            camera.lookAt(tgt)
+        }
+    }, [camera, targetRef.current])
     const elapsed = useRef(0)
     const radius = 5
     const height = 1
@@ -31,7 +38,7 @@ function CameraRig({ targetRef }: { targetRef: React.RefObject<THREE.Object3D> }
 // Memoized Canvas subtree so parent re‑renders (typewriter) don’t shake it
 const CanvasScene = memo(function CanvasScene({ airplaneRef }: { airplaneRef: React.RefObject<THREE.Object3D> }) {
     return (
-        <Canvas className="w-full h-full" camera={{ position: [10, 2, 0], fov: 60 }}>
+        <Canvas className="w-full h-full" camera={{ position: [5, 2.5, 0], fov: 60 }}>
             <Sky distance={450000} sunPosition={[0, -1, 0]} turbidity={20} rayleigh={0.1} mieCoefficient={0.1} mieDirectionalG={0.9} />
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 10, 5]} intensity={1} />

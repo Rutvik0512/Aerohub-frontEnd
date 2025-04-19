@@ -2,7 +2,20 @@
 import {AirportDto} from "@/dtos/airportdto";
 import {useEffect, useState} from "react";
 import {Button} from "@/components/ui/button";
-import {ArrowUpDown, Check, Clock, Compass, Flag, Globe, Loader2, MapPin, Mountain, Plane, Plus} from "lucide-react";
+import {
+    ArrowUpDown,
+    Check,
+    Clock,
+    Compass,
+    Flag,
+    Globe,
+    Loader2,
+    MapPin,
+    Mountain,
+    Plane,
+    Plus,
+    Snowflake
+} from "lucide-react";
 import {Input} from "@/components/ui/input";
 import {motion} from "framer-motion";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
@@ -462,9 +475,16 @@ export default function AirportDetailsPage() {
                                                     scale: 1.01,
                                                     y: -5,
                                                 }}
-                                                className="group hover:bg-teal-50 dark:hover:bg-teal-900/10 transition-all duration-200 hover:shadow-sm cursor-pointer transform hover:scale-[1.01]"
+                                                className={`group transition-all duration-200 cursor-pointer transform ${
+                                                    airport.elevation > 8000
+                                                        ? 'bg-blue-100 dark:bg-blue-900/30'
+                                                        : 'hover:bg-teal-50 dark:hover:bg-teal-900/10'
+                                                } hover:shadow-sm hover:scale-[1.01]`}
                                             >
-                                                <TableCell className="font-medium">
+                                                <TableCell className="relative font-medium pl-6">
+                                                    {airport.elevation> 8000 && (
+                                                        <Snowflake className="absolute top-1 left-1 h-4 w-4 text-blue-400" />
+                                                    )}
                                                     <div className="flex items-center gap-2">
                                                         <span
                                                             className="font-mono text-teal-600 dark:text-teal-400">{airport.key}</span>
